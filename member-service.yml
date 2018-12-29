@@ -1,0 +1,71 @@
+server:
+  port: ${PORT:9001}
+  
+
+spring:
+  jpa:
+    generate-ddl: true
+    database: mysql
+    show-sql: true
+    hibernate:
+     ddl-auto: update 
+  datasource:
+    platform: mysql
+    url: jdbc:mysql://104.211.112.21:3306/inspiratti?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false
+    username: root
+    password: P@ssw0rd@123
+  application:
+    name: member-service
+
+  cloud:
+    azure:
+      credential-file-path: my.azureauth  
+      resource-group: Prod_Inspirati
+      region: Central India
+      storage:
+        account: inspiratiblob
+  http:
+    multipart:
+      enabled: true
+      max-file-size: 500MB
+      max-request-size: 500MB
+      
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+
+
+
+  #contextPath: /resource
+security:
+  oauth2:
+    resource:
+      userInfoUri: http://localhost:8000/user
+  
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1111/eureka/
+      
+logging:
+  level:
+    org:
+      hibernate:
+         SQL : DEBUG
+         type:
+           descriptor:
+              sql:
+                BasicBinder: TRACE
+    org.springframework.web: ERROR
+    com.mkyong: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file: /var/www/log/member.log
+  feign:
+  hystrix:
+    enabled: true
+  okhttp:
+    enabled: true

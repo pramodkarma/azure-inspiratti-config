@@ -1,0 +1,42 @@
+server:
+  port: ${PORT:8000}
+ # contextPath: /auth
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1111/eureka/
+logging:
+  level:
+    org:
+      hibernate:
+         SQL : DEBUG
+         type:
+           descriptor:
+              sql:
+                BasicBinder: TRACE
+    org.springframework.web: ERROR
+    com.mkyong: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file: /var/www/log/auth.log
+
+spring:
+  jpa:
+    generate-ddl: true
+    database: mysql
+    show-sql: true
+    hibernate:
+     ddl-auto: update
+  datasource:
+    platform: mysql
+    url: jdbc:mysql://104.211.112.21:3306/inspiratti?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false
+    username: root
+    password: P@ssw0rd@123
+  application:
+    name: auth-server
+
+  jackson:
+    serialization:
+      fail-on-empty-beans: false

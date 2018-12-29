@@ -1,0 +1,60 @@
+server:  
+  port: ${PORT:8080}
+  
+spring:
+  http:
+    multipart:
+      max-file-size: 500MB
+      max-request-size: 500MB
+zuul:
+  routes:
+    auth:
+      path: /auth/**
+      sensitiveHeaders:
+      url: http://localhost:8000
+    member-service:
+      path: /member-service/**
+      sensitiveHeaders:
+      url: http://localhost:9001
+    user-service:
+      path: /userdetails-service/**
+      sensitiveHeaders:
+      url: http://localhost:9003
+    report-abuse-service:
+      path: /report-abuse-service/**
+      sensitiveHeaders:
+      url: http://localhost:9004
+    media-service:
+      path: /media-service/**
+      sensitiveHeaders:
+      url: http://localhost:9005
+    blog-post-services:
+      path: /blog-post-services/**
+      sensitiveHeaders:
+      url: http://localhost:9006
+    dictionary-service:
+      path: /dictionary-service/**
+      sensitiveHeaders:
+      url: http://localhost:9007
+
+# Discovery Server Access
+eureka:
+    client:
+      serviceUrl:
+        defaultZone: http://localhost:1111/eureka/
+logging:
+  level:
+    org:
+      hibernate:
+         SQL : DEBUG
+         type:
+           descriptor:
+              sql:
+                BasicBinder: TRACE
+    org.springframework.web: ERROR
+    com.mkyong: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file: /var/www/log/Gatway.log
+        
