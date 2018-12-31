@@ -37,12 +37,12 @@ zuul:
       sensitiveHeaders:
       url: http://localhost:9007
   host:
-    connect-timeout-millis: 60000
-    socket-timeout-millis: 60000
-    max-total-connections: 200
-    max-per-route-connections: 20
+    connect-timeout-millis: 160000000
+    socket-timeout-millis: 160000000
+    max-total-connections: 2000
+    max-per-route-connections: 200
     time-unit: MILLISECONDS
-    time-to-live: 10000
+    time-to-live: 10000000
 
 # Discovery Server Access
 eureka:
