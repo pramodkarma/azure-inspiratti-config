@@ -65,6 +65,11 @@ logging:
     file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
   file: /var/www/log/member.log
   feign:
+    client:
+      config:
+        default:
+          connectTimeout: 160000000
+          readTimeout: 160000000
   hystrix:
     enabled: true
   okhttp:

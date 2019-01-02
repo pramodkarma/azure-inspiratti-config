@@ -53,6 +53,11 @@ logging:
   file: /var/www/log/userdetailsapplication.log
       
   feign:
+    client:
+      config:
+        default:
+          connectTimeout: 160000000
+          readTimeout: 160000000
   hystrix:
     enabled: true
   okhttp:
