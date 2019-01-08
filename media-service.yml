@@ -39,6 +39,12 @@ spring:
     serialization:
       fail-on-empty-beans: false
 
+  #contextPath: /resource
+security:
+  oauth2:
+    resource:
+      userInfoUri: http://localhost:8000/user
+  
 ribbon:
   eureka:
     enabled: true
@@ -59,15 +65,6 @@ member-service:
 userdetails-service:
   ribbon:
     listOfServers: http://localhost:9003 
-
-
-  #contextPath: /resource
-security:
-  oauth2:
-    resource:
-      userInfoUri: http://localhost:8000/user
-  
-
 
 eureka:
   client:
