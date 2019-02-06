@@ -50,6 +50,10 @@ userdetails-service:
   ribbon:
     listOfServers: http://localhost:9003 
 
+dictionary-service:
+  ribbon:
+    listOfServers: http://localhost:9007
+
 eureka:
   client:
     serviceUrl:
